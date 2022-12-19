@@ -4,33 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/rotulo">
+    tools:context=".camara">
 
     <Button
-        android:id="@+id/btnScan"
+        android:id="@+id/btnreconocer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="lectura"
-        android:text="Scan"
+        android:text="Reconocimiento"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.816" />
+        app:layout_constraintVertical_bias="0.904" />
 
-    <EditText
-        android:id="@+id/txtResultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/btnScan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="571dp"
+        tools:ignore="MissingConstraints" /> />
 </androidx.constraintlayout.widget.ConstraintLayout>
