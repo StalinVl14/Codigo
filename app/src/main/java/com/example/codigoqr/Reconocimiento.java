@@ -28,7 +28,7 @@ public class Reconocimiento extends AppCompatActivity {
         });
 
         btnequipo = findViewById(R.id.btnequipo);
-        
+
         btnequipo=(Button) findViewById(R.id.btnequipo);
         btnequipo.setOnClickListener(new View.OnClickListener() {
             @Override
