@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -16,28 +19,47 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class lector extends AppCompatActivity {
 
-    EditText txtResultado;
-    Button btncam;
-
+    TextView txtResultado;
+    Button btncam, btnReconigtion;
+    ImageView imgView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lector);
 
-        btncam= findViewById(R.id.btncam);
-        txtResultado = findViewById(R.id.txtResultado);
+        txtResultado = findViewById(R.id.txtDataEquipo);
+        imgView = findViewById(R.id.imgViewCamara);
+        btncam = (Button) findViewById(R.id.btncam);
+        btnReconigtion = (Button) findViewById(R.id.btnReconocer);
 
-        btncam= (Button) findViewById(R.id.btncam);
         btncam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirCamara();
+            }
+        });
+
+        btnReconigtion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(lector.this, camara.class);
                 startActivity(i);
-                abrirCamara();
-
             }
         });
+
+        initQrLector();
+    }
+
+    private void initQrLector(){
+        // Iniciar el lector QR
+        IntentIntegrator integrator = new IntentIntegrator( lector.this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+        integrator.setPrompt("Lector - QR");
+        integrator.setCameraId(0);
+        integrator.setBeepEnabled(true);
+        integrator.setBarcodeImageEnabled(true);
+        integrator.initiateScan();
     }
 
     private void abrirCamara (){
@@ -60,8 +82,13 @@ public class lector extends AppCompatActivity {
                 txtResultado.setText(result.getContents());
             }
         }else {
-
             super.onActivityResult(requestCode, resultCode, data);
+        }
+
+        if (requestCode == 1 & resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imgBitmap = (Bitmap) extras.get("data");
+            imgView.setImageBitmap(imgBitmap);
         }
     }
 }
