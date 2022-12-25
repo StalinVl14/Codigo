@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,8 +15,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class lector extends AppCompatActivity {
 
@@ -43,7 +52,7 @@ public class lector extends AppCompatActivity {
         btnReconigtion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(lector.this, camara.class);
+                Intent i = new Intent(lector.this, Reconocimiento.class);
                 startActivity(i);
             }
         });
@@ -90,5 +99,33 @@ public class lector extends AppCompatActivity {
             Bitmap imgBitmap = (Bitmap) extras.get("data");
             imgView.setImageBitmap(imgBitmap);
         }
+    }
+
+
+    private void enviableWs(final String title, final String body, final String userId) {
+
+        String url = "http://oscarmashkasoft.pythonanywhere.com/";
+
+        StringRequest postResquest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(lector.this, "RESULTADO POST = " + response, Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Error", error.getMessage());
+            }
+        }) {
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("title", title);
+                params.put("body", body);
+                params.put("userId", userId);
+
+                return params;
+            }
+        };
+        Volley.newRequestQueue(this).add(postResquest);
     }
 }
