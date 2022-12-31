@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue_mashka_a_100">#82B1FF</color>
+    <color name="blue_mashka_a_200">#448AFF</color>
+    <color name="blue_mashka_a_400">#2979FF</color>
+    <color name="blue_mashka_a_700">#2962FF</color>
 </resources>

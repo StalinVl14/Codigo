@@ -30,9 +30,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, lector.class);
+                i.putExtra("start_lector",true);
                 startActivity(i);
             }
         });
     }
+
+
 
 }

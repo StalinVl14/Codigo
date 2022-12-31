@@ -6,39 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".lector">
 
-    <TextView
-        android:id="@+id/txtTitulo"
+    <LinearLayout
+        android:id="@+id/linerTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="DATOS DEL EQUIPO"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/txtDataEquipo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93"
-        tools:layout_editor_absoluteX="0dp" />
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/txtDataEquipo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="74dp" />
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DATOS DEL EQUIPO"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/txtNameLiga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtTemporadaLiga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/txtNameTeam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/btncam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tomar Foto"
+        android:backgroundTint="@color/blue_mashka_a_700"
+        android:text="TOMAR FOTO"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        app:icon="@android:drawable/ic_menu_camera"
+        app:iconGravity="textStart"
+        app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDataEquipo"
-        app:layout_constraintVertical_bias="0.084" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/linerTitle"
+        app:layout_constraintVertical_bias="0.028" />
 
     <ImageView
         android:id="@+id/imgViewCamara"
@@ -52,8 +77,15 @@
     <Button
         android:id="@+id/btnReconocer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Enviar Reconocimeinto"
+        android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/blue_mashka_a_700"
+        android:text="ENVIAR RECONOCIMIENTO"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        app:icon="?android:attr/actionModeWebSearchDrawable"
+        app:iconGravity="textStart"
+        app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="158dp" />
 
