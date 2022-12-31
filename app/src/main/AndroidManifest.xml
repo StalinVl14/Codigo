@@ -33,13 +33,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".camara"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".lector"
             android:exported="false">
             <meta-data
