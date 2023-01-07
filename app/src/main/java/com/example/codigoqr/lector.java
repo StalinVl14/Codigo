@@ -46,6 +46,7 @@ public class lector extends AppCompatActivity {
     Bitmap imgBitmap;
     Boolean startLector;
     final static String SUCCESS = "success";
+    String nombreEquipoFinal = "";
 
     private ProgressDialog progressDialog;
 
@@ -137,6 +138,8 @@ public class lector extends AppCompatActivity {
         txtNameLiga.setText(root.getString("nombre_liga"));
         txtTemaporadaLiga.setText(root.getString("temporada_liga"));
         txtNameTeam.setText(root.getString("nombre_equipo"));
+        this.nombreEquipoFinal = root.getString("nombre_equipo");
+
     }
 
     private void uploadImage() {
@@ -170,7 +173,7 @@ public class lector extends AppCompatActivity {
                             i.putExtra("name",name);
                             i.putExtra("img",response.body().getImg());
                             i.putExtra("format",response.body().getFormat());
-                            i.putExtra("name_team","EQUIPO" );
+                            i.putExtra("name_team", nombreEquipoFinal  );
                             startActivity(i);
                         }else{
                             Toast.makeText(getApplicationContext(), msg + " > " + name , Toast.LENGTH_LONG).show();
